@@ -1,8 +1,8 @@
 header {
 
   width: 100%;
-  color: $black;
-  background-color: $black;
+  color: $white;
+  background-color: $gatsby-purple;
 
   .container {
     display: flex;
@@ -11,21 +11,18 @@ header {
     line-height: 2.5em;
   }
 
-  ul,
-  li,
-  a {
-    display: flex;
-    align-items: center;
-  }
-
   ul {
-    justify-content: flex-end;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
+  li {
+    display: inline-block;
+  }
+
   a {
+    display: block;
     color: lighten($gatsby-purple, 50);
     text-decoration: none;
     padding: 0 .5em;
