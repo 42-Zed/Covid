@@ -13,6 +13,7 @@ const Footer = () => {
         <p>
           &copy; {new Date().getFullYear()},{" "}
           <a href={authorUrl}>{authorName}</a>
+          , alterations by 42-Zed.
         </p>
       </Container>
     </footer>

@@ -13,11 +13,11 @@ const Header = () => {
     <header>
       <Container type="content">
         <p>
-          <Link to="/">{companyName}</Link>
+          <Link to="/">42-Zed Covid Tracker</Link>
         </p>
         <ul>
           <li>
-            <Link to="/about/">Test</Link>
+            <Link to="/about/">About</Link>
           </li>
           <li>
             <a href={companyUrl}>
