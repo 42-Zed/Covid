@@ -42,7 +42,7 @@ const popupContentGatsby = `
  * @description This is an example of creating an effect used to zoom in and set a popup on load
  */
 
-const MapEffect = ({  }) => {
+ const MapEffect = ({  }) => {
   const map = useMap();
 
   let response;
@@ -54,9 +54,27 @@ const MapEffect = ({  }) => {
       return;
     }
 
-    const data = response;
+    const {data = []} = response;
 
     console.log(data);
+
+    const geoJson = {
+      type: 'FeatureCollection',
+      features: data.map((country = {}) => {
+        const { countryInfo = {} } = country;
+        const { lat, long: lng } = countryInfo;
+        return {
+          type: 'Feature',
+          properties: {
+           ...country,
+          },
+          geometry: {
+            type: 'Point',
+            coordinates: [ lng, lat ]
+          }
+        }
+      })
+    }
 
   return null;
 };
