@@ -47,7 +47,6 @@ const Map = ( props ) => {
       <BaseMap ref={mapRef} {...mapSettings}>
         { children }
         { basemap && <TileLayer {...basemap} /> }
-        <ZoomControl position="bottomright" />
       </BaseMap>
     </div>
   );

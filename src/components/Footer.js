@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer>
       <Container>
-        <p>&copy; { new Date().getFullYear() }, My Gatsby Site</p>
+        <p>&copy; { new Date().getFullYear() }, Colby Fayock. Modifications by 42-Zed</p>
       </Container>
     </footer>
   );
