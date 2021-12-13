@@ -5,11 +5,15 @@ footer {
   line-height: 2em;
   color: $white;
   text-align: center;
-  background-color: $blue-grey-700;
+  background-color: #555555;
 
   p {
     font-size: 1em;
     margin: 0;
+  }
+
+  a {
+    color: $hallow;
   }
 
 }

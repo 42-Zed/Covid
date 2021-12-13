@@ -30,13 +30,16 @@ const LineChart = () => {
                             'rgba(255, 255, 255)'
                         ],
                         borderWidth: 1
+                        
                     }
                 ]
             }} 
             height={500}
             width={500}
+        
             options={{
                 maintainAspectRatio: false,
+                fill: false,
             }}
             />
         </div>

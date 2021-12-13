@@ -19,10 +19,10 @@ const BarChart = () => {
                         label: 'Covid Overall',
                         data: [stats?.cases, stats?.recovered, stats?.active, stats?.deaths],
                         backgroundColor: [
-                            'rgba(255, 0, 0)',
-                            'rgba(0, 255, 0)',
-                            'rgba(0, 0, 255)',
-                            'rgba(0, 0, 0)'
+                            '#eb6123',
+                            '#80ffea',
+                            '#ff99dd',
+                            '#ffff19'
                         ],
                         borderColor: [
                             'rgba(255, 255, 255)',
