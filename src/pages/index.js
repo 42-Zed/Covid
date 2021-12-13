@@ -1,6 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import L from 'leaflet';
+import { Bar } from 'react-chartjs-2'
+import Chart from 'chart.js/auto'
 
 import { useTracker } from 'hooks';
 import { commafy, friendlyDate } from 'lib/util';
@@ -8,13 +10,16 @@ import { commafy, friendlyDate } from 'lib/util';
 import Layout from 'components/Layout';
 import Container from 'components/Container';
 import Map from 'components/Map';
+import BarChart from 'components/BarChart';
+import DoughnutChart from 'components/DoughnutChart';
+import LineChart from 'components/LineChart';
 
 const LOCATION = {
   lat: 0,
   lng: 0,
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
-const DEFAULT_ZOOM = 1.6;
+const DEFAULT_ZOOM = 2;
 
 const IndexPage = () => {
   const { data: stats = {} } = useTracker({
@@ -34,8 +39,18 @@ const IndexPage = () => {
         value: stats ? commafy( stats?.cases ) : '-',
       },
       secondary: {
-        label: 'Per 1 Million',
-        value: stats ? commafy( stats?.casesPerOneMillion ) : '-',
+        label: 'Cases Today',
+        value: stats ? commafy( stats?.todayCases ) : '-',
+      },
+    },
+    {
+      primary: {
+        label: 'Total Recovered',
+        value: stats ? commafy( stats?.recovered ) : '-',
+      },
+      secondary: {
+        label: 'Recovered Today',
+        value: stats ? commafy( stats?.todayRecovered ) : '-',
       },
     },
     {
@@ -44,18 +59,8 @@ const IndexPage = () => {
         value: stats ? commafy( stats?.deaths ) : '-',
       },
       secondary: {
-        label: 'Per 1 Million',
-        value: stats ? commafy( stats?.deathsPerOneMillion ) : '-',
-      },
-    },
-    {
-      primary: {
-        label: 'Total Tests',
-        value: stats ? commafy( stats?.tests ) : '-',
-      },
-      secondary: {
-        label: 'Per 1 Million',
-        value: stats ? commafy( stats?.testsPerOneMillion ) : '-',
+        label: 'Deaths Today',
+        value: stats ? commafy( stats?.todayDeaths ) : '-',
       },
     },
     {
@@ -72,8 +77,8 @@ const IndexPage = () => {
     },
     {
       primary: {
-        label: 'Recovered Cases',
-        value: stats ? commafy( stats?.recovered ) : '-',
+        label: 'Total Tests',
+        value: stats ? commafy( stats?.tests ) : '-',
       },
     },
   ];
@@ -183,16 +188,22 @@ const IndexPage = () => {
                       { primary.value }
                       <strong>{ primary.label }</strong>
                     </p>
-                  ) }
+                  ) }   
                   { secondary.value && (
                     <p className="tracker-stat-secondary">
                       { secondary.value }
                       <strong>{ secondary.label }</strong>
+                      
                     </p>
-                  ) }
-                </li>
+                  ) } 
+                </li> 
               );
             }) }
+          </ul>
+          <ul>
+            <BarChart></BarChart>
+          <DoughnutChart></DoughnutChart>
+          <LineChart></LineChart>
           </ul>
         </div>
         <div className="tracker-last-updated">
@@ -201,6 +212,7 @@ const IndexPage = () => {
       </div>
     </Layout>
   );
+  
 };
 
 export default IndexPage;
